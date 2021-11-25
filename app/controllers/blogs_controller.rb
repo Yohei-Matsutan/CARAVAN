@@ -14,7 +14,7 @@ class BlogsController < ApplicationController
   def create
     blog = Blog.new(blog_params)
     blog.save
-    redirect_to blog_path
+    redirect_to blogs_path
   end
 
   def edit
@@ -27,6 +27,12 @@ class BlogsController < ApplicationController
     # 最後の(blog.id)は(blog)だけでもidを拾ってくれるみたい
     redirect_to blog_path(blog.id)
 
+  end
+
+  def destroy
+    blog = Blog.find(params[:id])
+    blog.delete
+    redirect_to blogs_path
   end
 
 
